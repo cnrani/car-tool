@@ -4,8 +4,8 @@ import { CarForm } from './CarForm';
 import { CarTable } from './CarTable';
 
 
-export const CarTool = () => {
-  
+export const CarTool = (props) => {
+
 
 const [ cars, setCars ] = useState([]); // [] this is array
 const [ editCarId, setEditCarId ] = useState(-1);
@@ -20,9 +20,8 @@ const addCar = (car) => {
 const deleteCar = (car) => {
   setCars(
       cars.filter(c => c.id !== car.id));
-
-  setEditCarId(-1);    
-}; 
+      setEditCarId(-1);
+};
 
 const updateCar = (updatedCar) => {
   setCars(
@@ -35,13 +34,13 @@ const updateCar = (updatedCar) => {
     }));
     setEditCarId(-1)
 };
-    
+
 return <>
     <div id="content">
         <Header headerText="This is a Car DataBase"/>
-        <CarForm onSubmitCar={addCar} buttonText="Add Car"/>
-        <CarTable cars={cars} onDeleteCar={deleteCar} 
-          editCarId={editCarId} onEditCar={setEditCarId} onUpdateCar={updateCar}/>
+        <CarForm onSubmitCar={props.onAddCar} buttonText="Add Car"/>
+        <CarTable cars={props.cars} onDeleteCar={props.onDeleteCar}
+                  editCarId={props.editCarId} onEditCar={props.onEditCar} onUpdateCar={props.onUpdateCar} onCancelCar={props.onCancelCar}/>
     </div>
 </>;
 
