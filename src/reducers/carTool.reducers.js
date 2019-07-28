@@ -27,7 +27,7 @@ export const carReducer =  (state = { cars:[], editCarId:-1}, action) => {   // 
                         return c;
                     }
                 }),
-
+                editCarId: -1,
             };
         //return state - action.payload.value;  // it is just number not the object
         case DELETE_CAR_ACTION:
