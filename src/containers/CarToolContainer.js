@@ -1,7 +1,7 @@
 import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 
-import { createAddCarAction,updateCarAction, deleteCarAction, editCarAction,cancelCarAction} from '../actions/carTool.actions';
+import { createAddCarAction,updateCarAction, deleteCarAction, editCarAction,cancelCarAction, refreshCars} from '../actions/carTool.actions';
 import {CarTool} from "../components/CarTool";
 
 
@@ -19,10 +19,14 @@ const mapDispatchToProps = dispatch => bindActionCreators(
         onDeleteCar:deleteCarAction,
         onEditCar:editCarAction,
         onCancelCar:cancelCarAction,
+        onRefreshCars:refreshCars,
 
 
     }, dispatch);
 
+//dispatch(refreshCars());
+//(...params) => dispatch(actionCreator(...params))
+//(car) => dispatch(createAddCarAction(car))
 
 const createCarToolContainer = connect(mapStateToProps,mapDispatchToProps);
 

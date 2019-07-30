@@ -1,5 +1,5 @@
 
-import {ADD_CAR_ACTION,UPDATE_CAR_ACTION,DELETE_CAR_ACTION,EDIT_CAR_ACTION, CANCEL_CAR_ACTION} from "../actions/carTool.actions";
+import {ADD_CAR_ACTION,UPDATE_CAR_ACTION,DELETE_CAR_ACTION,EDIT_CAR_ACTION, CANCEL_CAR_ACTION, REFRESH_CARS_DONE_ACTION} from "../actions/carTool.actions";
 
 
 export const carReducer =  (state = { cars:[], editCarId:-1}, action) => {   // current and accumulator . state is immutable and need to reproduce new state every time
@@ -52,6 +52,13 @@ export const carReducer =  (state = { cars:[], editCarId:-1}, action) => {   // 
                 editCarId: -1,
 
             };
+
+        case REFRESH_CARS_DONE_ACTION:
+            return {
+                ...state,
+                cars: action.payload.cars,
+            }
+
         default:
             return state;
     }

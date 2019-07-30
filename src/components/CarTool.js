@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Header } from './Header';
 import { CarForm } from './CarForm';
 import { CarTable } from './CarTable';
+import {refreshCars} from "../actions/carTool.actions";
 
 
 export const CarTool = (props) => {
@@ -34,6 +35,11 @@ const updateCar = (updatedCar) => {
     }));
     setEditCarId(-1)
 };
+
+
+useEffect(()=>{
+    props.onRefreshCars();
+}, [props.onRefreshCars]);  //runs on every remnder
 
 return <>
     <div id="content">
